@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-from tweeter import tweeterSteamListener
+from twitter import tweeterSteamListener
 
 from flask import Flask
 
