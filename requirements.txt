@@ -1,0 +1,4 @@
+flask==2.0.2
+tweepy==4.5.0
+python-dotenv==0.19.2
+slack-sdk==3.14.1
