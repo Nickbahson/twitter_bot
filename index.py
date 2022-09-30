@@ -1,5 +1,6 @@
 import concurrent.futures
 
+# from slack import webhook_request # sendItem
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -18,6 +19,7 @@ def hello_world():
 
 if __name__ == "__main__":
     # app.run()
+    # webhook_request('#general', "A title", "status.text")
     with concurrent.futures.ProcessPoolExecutor() as executor:
         p0 = executor.submit(tweeterSteamListener.filter, track=["iphone"])
         p1 = executor.submit(tweeterSteamListener.filter, track=["samsung"])

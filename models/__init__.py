@@ -6,6 +6,9 @@ import re
 
 
 def channel_name(tweet):
+    print('++++++++++++++ A new tweet +++++++++++++++++++')
+    print(tweet)
+    print('++++++++++++++ Any new tweet +++++++++++++++++++')
     general_channel_pattern = re.compile(r'(don\'t know|can\'t tell|why is)')
     matches = general_channel_pattern.finditer(tweet)
     for match in matches:

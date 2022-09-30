@@ -4,7 +4,7 @@ import time
 import tweepy
 
 import models
-from slack import sendItem
+from slack import webhook_request # sendItem
 
 consumer_key = os.environ["TWITTER_API_KEY"]
 consumer_secret = os.environ["TWITTER_API_KEY_SECRET"]
@@ -14,8 +14,21 @@ access_token_secret = os.environ["TWITTER_ACCESS_TOKEN_SECRET"]
 
 class StreamListener(tweepy.Stream):
     def on_status(self, status):
+        # print('++++++++++ a new status ++++++++++++')
+        # print(status)
+        # print('++++++++++ a new status ++++++++++++')
         name = models.channel_name(status.text)
-        sendItem(name, "A title", status.text)
+
+        # If tweet of interest if found, matching each
+        # slack channel(department) or duties (responsibilities).
+
+        # if  name == '#random':
+        #     print(' +++ belongs to channel +++++')
+        #     print(name)
+        #     print(' +++ belongs to channel +++++')
+        #     return
+        # sendItem(name, "A title", status.text)
+        webhook_request(name, "A new item was found", status)
 
     def on_connection_error(self):
         self.disconnect()
